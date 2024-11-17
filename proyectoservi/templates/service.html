@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'css/index.css' %}">
+    <link rel="stylesheet" href="{% static 'css/service.css' %}">
+    <title>Servicio</title>
+</head>
+<body>
+    <div class="container">
+        <div class="form-container">
+            <h2>Solicitar Servicio</h2>
+            <form method="post">
+                {% csrf_token %}
+                <input type="text" name="tipo_servicio" placeholder="Tipo de Servicio...">
+                <input type="text" name="modelo_vehiculo" placeholder="Modelo de Vehiculo...">
+                <input type="text" name="descripcion_problema" placeholder="Descripcion del Problema...">
+                <input type="text" name="patente" placeholder="Patente...">
+                <div class="button-container">
+                    <button type="button" class="secondary" onclick="window.history.back()">Volver Atras</button>
+                    <button type="submit" class="primary">Solicitar</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</body>
+</html>

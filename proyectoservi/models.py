@@ -8,3 +8,13 @@ class Profile(models.Model):
 
     def __str__(self):
         return 'Perfil del usuario {}'.format(self.user.username)
+
+class ServiceRequest(models.Model):
+    tipo_servicio = models.CharField(max_length=100)
+    modelo_vehiculo = models.CharField(max_length=100)
+    descripcion_problema = models.TextField()
+    patente = models.CharField(max_length=20)
+    user = models.ForeignKey(User, on_delete=models.CASCADE)
+
+    def __str__(self):
+        return f'Solicitud de Servicio {self.tipo_servicio} para {self.modelo_vehiculo}'

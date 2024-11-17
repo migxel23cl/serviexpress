@@ -1,6 +1,6 @@
 from django.shortcuts import render, redirect
 from django.contrib.auth.models import User
-from .models import Profile
+from .models import Profile, ServiceRequest
 from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.models import Group, Permission
@@ -85,3 +85,26 @@ def superuser_index(request):
 def logout_view(request):
     logout(request)
     return redirect("login")
+
+@login_required
+def service_view(request):
+    if request.method == "POST":
+        # Service fields
+        tipo_servicio = request.POST.get("tipo_servicio")
+        modelo_vehiculo = request.POST.get("modelo_vehiculo")
+        descripcion_problema = request.POST.get("descripcion_problema")
+        patente = request.POST.get("patente")
+
+        # Create service request
+        user = request.user
+        ServiceRequest.objects.create(
+            tipo_servicio=tipo_servicio,
+            modelo_vehiculo=modelo_vehiculo,
+            descripcion_problema=descripcion_problema,
+            patente=patente,
+            user=user
+        )
+
+        return render(request, "confirmacion_servicio.html")
+
+    return render(request, "service.html")
