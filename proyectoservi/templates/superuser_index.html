@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'css/index.css' %}">
+    <title>Superuser Dashboard</title>
+</head>
+<body>
+    <div class="container">
+        <div class="form-container">
+            <a href="{% url 'logout' %}" class="logout-button">Cerrar sesión</a>
+            <h2>Bienvenido Superuser</h2>
+            <button onclick="location.href='#'">Registrar/Modificar/Eliminar Proveedor</button>
+            <button onclick="location.href='#'">Registrar/Modificar/Eliminar Producto</button>
+            <button onclick="location.href='#'">Registrar/Modificar/Eliminar Empleado</button>
+            <button onclick="location.href='#'">Registrar/Modificar/Eliminar Servicio</button>
+        </div>
+    </div>
+</body>
+</html>
