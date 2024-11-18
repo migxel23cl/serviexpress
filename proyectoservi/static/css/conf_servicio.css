@@ -60,3 +60,40 @@ button.secondary:hover {
 .white-text {
     color: white;
 }
+
+.logout-button {
+    background-color: #6C757D;
+    text-decoration: none;
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    padding: 10px;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    font-size: 16px;
+    cursor: pointer;
+}
+
+.logout-button:hover {
+    background-color: #5a6268;
+}
+
+.success {
+    background-color: #28A745;
+    text-decoration: none;
+    position: absolute;
+    bottom: 20px;
+    right: 20px;
+    padding: 10px;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    font-size: 16px;
+    cursor: pointer;
+}
+
+a { 
+    text-decoration: none;
+    color: white;
+}

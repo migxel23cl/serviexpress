@@ -11,7 +11,7 @@
     <div class="container">
         <div class="form-container">
             <a href="{% url 'logout' %}" class="logout-button">Cerrar sesión</a>
-            <h2>Bienvenido Empleado</h2>
+            <h2>Bienvenido {{ user.username }}</h2>
             <button onclick="location.href='#'">Generar Informe</button>
             <button onclick="location.href='#'">Ver Servicios</button>
         </div>

@@ -10,4 +10,5 @@ urlpatterns = [
     path('logout/', views.logout_view, name="logout"),
     path('user/service/', views.service_view, name="service_view"),
     path('user/service/request/', views.service_request, name="service_request"),
+    path('user/service/request/invoice/', views.invoice_request, name="invoice_request"),
 ]

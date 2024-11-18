@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    {% load static %}
+    <title>Factura {{ factura.invoice_number }}</title>
+    <link rel="stylesheet" href="{% static 'css/invoice.css' %}">
+</head>
+<body>
+    <div class="container">
+        <div class="invoice-container">
+            <h1>Factura {{ factura.invoice_number }}</h1>
+            <p><strong>Fecha de Emisión:</strong> {{ factura.date_issued }}</p>
+            <p><strong>Fecha de Vencimiento:</strong> {{ factura.due_date }}</p>
+            <p><strong>Solicitud de Servicio:</strong> {{ factura.service_request }}</p>
+            <p><strong>Subtotal:</strong> {{ factura.subtotal }}</p>
+            <p><strong>Impuesto:</strong> {{ factura.tax }}</p>
+            <p><strong>Total:</strong> {{ factura.total }}</p>
+            <p><strong>Método de Pago:</strong> {{ factura.payment_method }}</p>
+            <p><strong>Notas:</strong> {{ factura.notes }}</p>
+            <button type="button" class="back-button" onclick="window.history.back()">Volver Atrás</button>
+        </div>
+    </div>
+</body>
+</html>

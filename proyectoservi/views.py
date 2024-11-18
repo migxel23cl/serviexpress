@@ -1,9 +1,14 @@
 from django.shortcuts import render, redirect
 from django.contrib.auth.models import User
-from .models import Profile, ServiceRequest
+from .models import Profile, Servicio
 from django.contrib.auth import authenticate, login, logout
-from django.contrib.auth.decorators import login_required
+from django.contrib.auth.decorators import login_required, user_passes_test
 from django.contrib.auth.models import Group, Permission
+
+def is_in_group(group_name):
+    def check(user):
+        return user.groups.filter(name=group_name).exists()
+    return check
 
 def create_employee_role():
     group, created = Group.objects.get_or_create(name='empleado')
@@ -74,10 +79,12 @@ def login_page(request):
 def user_index(request):
     return render(request, "user_index.html")
 
+@user_passes_test(is_in_group('empleado'))
 @login_required
 def employee_index(request):
     return render(request, "employee_index.html")
 
+@user_passes_test(lambda u: u.is_superuser)
 @login_required
 def superuser_index(request):
     return render(request, "superuser_index.html")
@@ -97,7 +104,7 @@ def service_view(request):
 
         # Create service request
         user = request.user
-        ServiceRequest.objects.create(
+        Servicio.objects.create(
             tipo_servicio=tipo_servicio,
             modelo_vehiculo=modelo_vehiculo,
             descripcion_problema=descripcion_problema,
@@ -112,3 +119,7 @@ def service_view(request):
 @login_required
 def service_request(request):
     return render(request, "confirmacion_servicio.html")
+
+@login_required
+def invoice_request(request):
+    return render(request, "invoice.html")
