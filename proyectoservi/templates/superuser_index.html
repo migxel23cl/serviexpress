@@ -12,10 +12,9 @@
         <div class="form-container">
             <a href="{% url 'logout' %}" class="logout-button">Cerrar sesión</a>
             <h2>Bienvenido {{ user.username }}</h2>
-            <button onclick="location.href='#'">Registrar/Modificar/Eliminar Proveedor</button>
-            <button onclick="location.href='#'">Registrar/Modificar/Eliminar Producto</button>
-            <button onclick="location.href='#'">Registrar/Modificar/Eliminar Empleado</button>
-            <button onclick="location.href='#'">Registrar/Modificar/Eliminar Servicio</button>
+            <button onclick="location.href='#'">Registrar-Modificar-Eliminar Producto</button>
+            <button onclick="location.href='/admin/proyectoservi/profile/'">Registrar-Modificar-Eliminar Empleados/Usuarios</button>
+            <button onclick="location.href='/admin/proyectoservi/servicio/'">Registrar-Modificar-Eliminar Servicio</button>
         </div>
     </div>
 </body>
