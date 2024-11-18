@@ -108,3 +108,7 @@ def service_view(request):
         return render(request, "confirmacion_servicio.html")
 
     return render(request, "service.html")
+
+@login_required
+def service_request(request):
+    return render(request, "confirmacion_servicio.html")

@@ -9,4 +9,5 @@ urlpatterns = [
     path('superuser/', views.superuser_index, name="superuser_index"),
     path('logout/', views.logout_view, name="logout"),
     path('user/service/', views.service_view, name="service_view"),
+    path('user/service/request/', views.service_request, name="service_request"),
 ]
