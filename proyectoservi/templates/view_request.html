@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    {% load static %}
+    <title>Solicitud de Servicio</title>
+    <link rel="stylesheet" href="{% static 'css/view_request.css' %}">
+</head>
+<body>
+    <div class="container">
+        <h1>Solicitud de Servicio</h1>
+        <table border="1">
+            <thead>
+                <tr>
+                    <th>Tipo de Servicio</th>
+                    <th>Modelo del Vehículo</th>
+                    <th>Descripción del Problema</th>
+                    <th>Patente</th>
+                    <th>Usuario</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>{{ service.tipo_servicio }}</td>
+                    <td>{{ service.modelo_vehiculo }}</td>
+                    <td>{{ service.descripcion_problema }}</td>
+                    <td>{{ service.patente }}</td>
+                    <td>{{ service.user.username }}</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</body>
+</html>

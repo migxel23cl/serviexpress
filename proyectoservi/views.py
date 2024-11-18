@@ -96,6 +96,8 @@ def logout_view(request):
 @login_required
 def service_view(request):
     if request.method == "POST":
+        context = {}
+        
         # Service fields
         tipo_servicio = request.POST.get("tipo_servicio")
         modelo_vehiculo = request.POST.get("modelo_vehiculo")
@@ -104,22 +106,43 @@ def service_view(request):
 
         # Create service request
         user = request.user
+
+        # Context data
+        context = {
+            "tipo_servicio": tipo_servicio,
+            "modelo_vehiculo": modelo_vehiculo,
+            "descripcion_problema": descripcion_problema,
+            "patente": patente,
+            "user": user
+        }
+
         Servicio.objects.create(
             tipo_servicio=tipo_servicio,
             modelo_vehiculo=modelo_vehiculo,
             descripcion_problema=descripcion_problema,
             patente=patente,
-            user=user
+            user=user.username
         )
 
-        return render(request, "confirmacion_servicio.html")
+        request.session['service_request'] = context
 
-    return render(request, "service.html")
+        return redirect('service_request')
+
+    return render(request, "service.html", context)
 
 @login_required
 def service_request(request):
+    context = request.session.get('service_context', {})
+    request.session['service_context'] = context
     return render(request, "confirmacion_servicio.html")
 
 @login_required
 def invoice_request(request):
     return render(request, "invoice.html")
+
+@login_required
+def view_request(request):
+    context = request.session.get('service_request', {})
+    
+
+    return render(request, "view_request.html", {'service': context})
