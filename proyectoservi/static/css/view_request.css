@@ -48,3 +48,107 @@ th {
 tr:hover {
     background-color: #0056b3;
 }
+
+.danger-button {
+    display: inline-block;
+    font-weight: 400;
+    color: #fff;
+    text-align: center;
+    vertical-align: middle;
+    user-select: none;
+    background-color: #dc3545;
+    border: 1px solid #dc3545;
+    padding: 0.375rem 0.75rem;
+    font-size: 1rem;
+    line-height: 1.5;
+    border-radius: 0.25rem;
+    width: 100%;
+    transition: color 0.15s ease-in-out, background-color 0.15s ease-in-out, border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+}
+
+.danger-button:hover {
+    color: #fff;
+    background-color: #c82333;
+    border-color: #bd2130;
+}
+
+.button-container {
+    margin-top: 20px;
+    display: flex;
+    justify-content: center;
+}
+
+.danger-button, .cancel-button {
+    margin: 0;
+}
+
+.cancel-button {
+    display: inline-block;
+    font-weight: 400;
+    color: #fff;
+    text-align: center;
+    vertical-align: middle;
+    user-select: none;
+    background-color: #6c757d;
+    border: 1px solid #6c757d;
+    padding: 0.375rem 0.75rem;
+    font-size: 1rem;
+    line-height: 1.5;
+    border-radius: 0.25rem;
+    width: 100%;
+    margin-top: 10px;
+    transition: color 0.15s ease-in-out, background-color 0.15s ease-in-out, border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+}
+
+.cancel-button:hover {
+    color: #fff;
+    background-color: #5a6268;
+    border-color: #545b62;
+}
+
+.logout-button {
+    background-color: #6C757D;
+    text-decoration: none;
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    padding: 10px;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    font-size: 16px;
+    cursor: pointer;
+}
+
+.logout-button:hover {
+    background-color: #5a6268;
+}
+
+.go-back-button {
+    background-color: #28A745;
+    text-decoration: none;
+    position: absolute;
+    bottom: 20px;
+    right: 20px;
+    padding: 10px;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    font-size: 16px;
+    cursor: pointer;
+}
+
+.go-back-button:hover {
+    background-color: #218838;
+}
+
+.center-text {
+    text-align: center;
+    font-weight: bold;
+    margin-top: 20px;
+    font-size: 1.5rem; 
+    color: #ffffff;
+    background-color: #dc3545; 
+    padding: 10px;
+    border-radius: 5px; 
+}

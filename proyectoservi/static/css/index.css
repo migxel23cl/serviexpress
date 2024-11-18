@@ -30,25 +30,6 @@ h2 {
     color: #ffffff;
 }
 
-button, .logout-button {
-    padding: 10px;
-    background-color: #007BFF;
-    color: white;
-    border: none;
-    border-radius: 5px;
-    font-size: 16px;
-    cursor: pointer;
-    margin-top: 10px;
-}
-
-button {
-    width: 100%;
-}
-
-button:hover, .logout-button:hover {
-    background-color: #0056b3;
-}
-
 .logout-button {
     background-color: #6C757D;
     text-decoration: none;
@@ -59,4 +40,5 @@ button:hover, .logout-button:hover {
 
 .logout-button:hover {
     background-color: #5a6268;
+    text-decoration: none;
 }

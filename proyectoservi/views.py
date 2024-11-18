@@ -1,4 +1,4 @@
-from django.shortcuts import render, redirect
+from django.shortcuts import render, redirect, get_object_or_404
 from django.contrib.auth.models import User
 from .models import Profile, Servicio
 from django.contrib.auth import authenticate, login, logout
@@ -107,33 +107,20 @@ def service_view(request):
         # Create service request
         user = request.user
 
-        # Context data
-        context = {
-            "tipo_servicio": tipo_servicio,
-            "modelo_vehiculo": modelo_vehiculo,
-            "descripcion_problema": descripcion_problema,
-            "patente": patente,
-            "user": user
-        }
-
         Servicio.objects.create(
             tipo_servicio=tipo_servicio,
             modelo_vehiculo=modelo_vehiculo,
             descripcion_problema=descripcion_problema,
             patente=patente,
-            user=user.username
+            user=user
         )
-
-        request.session['service_request'] = context
 
         return redirect('service_request')
 
-    return render(request, "service.html", context)
+    return render(request, "service.html")
 
 @login_required
 def service_request(request):
-    context = request.session.get('service_context', {})
-    request.session['service_context'] = context
     return render(request, "confirmacion_servicio.html")
 
 @login_required
@@ -142,7 +129,17 @@ def invoice_request(request):
 
 @login_required
 def view_request(request):
-    context = request.session.get('service_request', {})
+    user = request.user
+    services = Servicio.objects.filter(user=user)
+    context = {'services': services}
     
+    return render(request, "view_request.html", context)
 
-    return render(request, "view_request.html", {'service': context})
+@login_required
+def delete_service(request, id):
+    service = get_object_or_404(Servicio, id=id, user=request.user)
+    if request.method == "POST":
+        service.delete()
+        return redirect('view_request')
+
+    return render(request, "delete_service.html", {"service": service})
