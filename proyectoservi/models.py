@@ -32,3 +32,7 @@ class Factura(models.Model):
 
     def __str__(self):
         return f'Factura {self.invoice_number} para {self.service_request}'
+    
+
+#class Producto(models.Model):
+    
