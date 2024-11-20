@@ -35,10 +35,10 @@ class Factura(models.Model):
     
 
 class Producto(models.Model):
-    nombre = models.CharField(max_length=100)  # Nombre del producto
-    descripcion = models.TextField(blank=True, null=True)  # Descripción del producto
-    precio = models.DecimalField(max_digits=10, decimal_places=2)  # Precio del producto
-    imagen = models.ImageField(upload_to='productos/', blank=True, null=True)  # Imagen del producto
+    nombre = models.CharField(max_length=100)  
+    descripcion = models.TextField(blank=True, null=True) 
+    precio = models.DecimalField(max_digits=10, decimal_places=2) 
+    imagen = models.ImageField(upload_to='', blank=True, null=True)
 
     def __str__(self):
         return self.nombre

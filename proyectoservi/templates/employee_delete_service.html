@@ -4,13 +4,13 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     {% load static %}
-    <title>Solicitud de Servicio</title>
+    <title>Confirmar Eliminación</title>
     <link rel="stylesheet" href="{% static 'css/view_request.css' %}">
 </head>
 <body>
-    <button class="logout-button" onclick="location.href='/logout'">Cerrar Sesion</button>
     <div class="container">
-        <h1>Solicitud de Servicio</h1>
+        <h1>Confirmar Eliminación</h1>
+        <h2 class="center-text">¿Estás seguro de que deseas eliminar esta solicitud de servicio?</h2>
         <table border="1">
             <thead>
                 <tr>
@@ -22,21 +22,22 @@
                 </tr>
             </thead>
             <tbody>
-                {% for service in services %}
                 <tr>
                     <td>{{ service.tipo_servicio }}</td>
                     <td>{{ service.modelo_vehiculo }}</td>
                     <td>{{ service.descripcion_problema }}</td>
                     <td>{{ service.patente }}</td>
-                    <td>{{ service.user }}</td>
-                    <td>
-                        <button class="danger-button" onclick="location.href='/user/service/request/view/delete/{{ service.id }}/'">Eliminar Servicio</button>
-                    </td>
+                    <td>{{ service.user.username }}</td>
                 </tr>
-                {% endfor %}
             </tbody>
         </table>
+        <div class="button-container">
+            <form method="post" action="{% url 'delete' service.id %}">
+                {% csrf_token %}
+                <button type="submit" class="danger-button">Confirmar Eliminación</button>
+                <button type="button" class="cancel-button" onclick="window.location.href='{% url 'all_employee_service' %}'">Cancelar</button>
+            </form>
+        </div>
     </div>
-    <button class="go-back-button" onclick="location.href='/user/service/request/'">Volver</button>
 </body>
 </html>

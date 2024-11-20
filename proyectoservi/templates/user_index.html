@@ -11,9 +11,9 @@
 <body>
     <div class="container">
         <div class="form-container">
-            <a href="{% url 'logout' %}" class="logout-button">Cerrar sesión</a>
+            <a href="{% url 'logout' %}" class="btn btn-secondary logout-button">Cerrar sesión</a>
             <h2>Bienvenido {{ user.username }}</h2>
-            <button class="btn btn-primary" onclick="location.href='service/'">Reservar Servicio</button>
+            <button class="btn btn-primary m-bottom" onclick="location.href='service/'">Reservar Servicio</button>
             <button class="btn btn-secondary" onclick="location.href='service/request/view/'">Ver Servicios</button>
         </div>
     </div>

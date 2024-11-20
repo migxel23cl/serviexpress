@@ -96,7 +96,6 @@ def logout_view(request):
 @login_required
 def service_view(request):
     if request.method == "POST":
-        context = {}
         
         # Service fields
         tipo_servicio = request.POST.get("tipo_servicio")
@@ -144,9 +143,27 @@ def delete_service(request, id):
 
     return render(request, "delete_service.html", {"service": service})
 
-
-
-
+@login_required
 def vista_productos(request):
     productos = Producto.objects.all()
     return render(request, 'products.html', {'productos': productos})
+
+@login_required
+def view_all_services(request):
+    services = Servicio.objects.all()
+    return render(request, 'all_services.html', {'services': services})
+
+@login_required
+def complete_service(request, id):
+    service = get_object_or_404(Servicio, id=id)
+    service.completed = True
+    service.save()
+    return redirect('all_employee_service')
+
+@login_required
+def employee_delete_service(request, id):
+    service = get_object_or_404(Servicio, id=id)
+    if request.method == "POST":
+        service.delete()
+        return redirect('all_employee_service')
+    return render(request, "employee_delete_service.html", {"service": service})
