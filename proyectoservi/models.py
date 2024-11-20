@@ -34,5 +34,12 @@ class Factura(models.Model):
         return f'Factura {self.invoice_number} para {self.service_request}'
     
 
-#class Producto(models.Model):
+class Producto(models.Model):
+    nombre = models.CharField(max_length=100)  # Nombre del producto
+    descripcion = models.TextField(blank=True, null=True)  # Descripción del producto
+    precio = models.DecimalField(max_digits=10, decimal_places=2)  # Precio del producto
+    imagen = models.ImageField(upload_to='productos/', blank=True, null=True)  # Imagen del producto
+
+    def __str__(self):
+        return self.nombre
     

@@ -9,6 +9,7 @@ urlpatterns = [
     path('superuser/', views.superuser_index, name="superuser_index"),
     path('logout/', views.logout_view, name="logout"),
     path('user/service/', views.service_view, name="service_view"),
+    path('productos/', views.vista_productos, name='vista_productos'),
     path('user/service/request/', views.service_request, name="service_request"),
     path('user/service/request/invoice/', views.invoice_request, name="invoice_request"),
     path('user/service/request/view/', views.view_request, name="view_request"),

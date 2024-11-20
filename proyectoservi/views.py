@@ -1,6 +1,6 @@
 from django.shortcuts import render, redirect, get_object_or_404
 from django.contrib.auth.models import User
-from .models import Profile, Servicio
+from .models import Profile, Servicio, Producto
 from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.decorators import login_required, user_passes_test
 from django.contrib.auth.models import Group, Permission
@@ -143,3 +143,10 @@ def delete_service(request, id):
         return redirect('view_request')
 
     return render(request, "delete_service.html", {"service": service})
+
+
+
+
+def vista_productos(request):
+    productos = Producto.objects.all()
+    return render(request, 'products.html', {'productos': productos})

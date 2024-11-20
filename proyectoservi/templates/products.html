@@ -1,13 +1,30 @@
 <!DOCTYPE html>
-<html lang="es">
+<html lang="en">
 <head>
+    {% load static %}
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    {% load static %}
-    <title>Productos</title>
-    <link rel="stylesheet" href="{% static 'css/productos.css' %}">
+    <title>Vista Productos</title>
+    <link rel="stylesheet" href="{% static 'css/products.css' %}">
 </head>
-<main>
-    <body>
-    </body>
-</main>
+<body>
+    <div class="productos-container">
+        <h1>Vista Productos</h1>
+        <div class="productos-grid">
+            {% for producto in productos %}
+            <div class="producto-card">
+                <img src="{{ producto.imagen.url }}" alt="{{ producto.nombre }}" class="producto-imagen">
+                <h3>{{ producto.nombre }}</h3>
+                <p>{{ producto.descripcion }}</p>
+                <p class="precio">${{ producto.precio }}</p>
+            </div>
+            {% endfor %}
+        </div>
+        <div class="botones">
+            <button onclick="alert('Carro vaciado')">Vaciar Carro</button>
+            <button onclick="history.back()">Volver Atrás</button>
+            <button onclick="alert('Ir a pagar')">Ir a Pagar</button>
+        </div>
+    </div>
+</body>
+</html>
