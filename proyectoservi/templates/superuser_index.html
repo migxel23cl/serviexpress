@@ -4,18 +4,22 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     {% load static %}
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
     <link rel="stylesheet" href="{% static 'css/index.css' %}">
     <title>Superuser Dashboard</title>
 </head>
 <body>
     <div class="container">
         <div class="form-container">
-            <a href="{% url 'logout' %}" class="logout-button">Cerrar sesión</a>
+            <a href="{% url 'logout' %}" class="btn btn-secondary logout-button">Cerrar sesión</a>
             <h2>Bienvenido {{ user.username }}</h2>
-            <button onclick="location.href='#'">Registrar-Modificar-Eliminar Producto</button>
-            <button onclick="location.href='/admin/proyectoservi/profile/'">Registrar-Modificar-Eliminar Empleados/Usuarios</button>
-            <button onclick="location.href='/admin/proyectoservi/servicio/'">Registrar-Modificar-Eliminar Servicio</button>
+            <button class="btn btn-primary w-100 mb-2" onclick="location.href='/admin/proyectoservi/producto/'">Registrar-Modificar-Eliminar Producto</button>
+            <button class="btn btn-primary w-100 mb-2" onclick="location.href='/admin/proyectoservi/profile/'">Registrar-Modificar-Eliminar Empleados/Usuarios</button>
+            <button class="btn btn-primary w-100 mb-2" onclick="location.href='/admin/proyectoservi/servicio/'">Registrar-Modificar-Eliminar Servicio</button>
         </div>
     </div>
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 </body>
 </html>

@@ -150,13 +150,13 @@ def vista_productos(request):
 
 @login_required
 def view_all_services(request):
-    services = Servicio.objects.all()
+    services = Servicio.objects.filter(completado=False)
     return render(request, 'all_services.html', {'services': services})
 
 @login_required
 def complete_service(request, id):
     service = get_object_or_404(Servicio, id=id)
-    service.completed = True
+    service.completado = True
     service.save()
     return redirect('all_employee_service')
 

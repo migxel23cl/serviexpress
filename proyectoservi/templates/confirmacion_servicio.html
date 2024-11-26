@@ -13,8 +13,6 @@
         <div class="form-container">
             <a href="{% url 'logout' %}" class="logout-button">Cerrar sesión</a>
             <h1 class="white-text">Confirmación de Servicio</h1>
-            <!-- <button class="primary"><a href="{% url 'invoice_request' %}">Ver Factura</a></button> -->
-            <button class="secondary">Comprar Productos</button>
             <button class="primary" onclick="window.location.href='{% url 'view_request' %}'">Ver Solicitudes</button>
             <button class="success" onclick="window.location.href='{% url 'user_index' %}'">Volver al Inicio</button>
         </div>

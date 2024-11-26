@@ -15,6 +15,7 @@ class Servicio(models.Model):
     descripcion_problema = models.TextField()
     patente = models.CharField(max_length=20)
     user = models.ForeignKey(User, on_delete=models.CASCADE)
+    completado = models.BooleanField(default=False)
 
     def __str__(self):
         return f'Solicitud de Servicio {self.tipo_servicio} para {self.modelo_vehiculo}'
