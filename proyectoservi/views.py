@@ -170,6 +170,14 @@ def employee_delete_service(request, id):
     return render(request, "employee_delete_service.html", {"service": service})
 
 @login_required
+def admin_delete_service(request, id):
+    service = get_object_or_404(Servicio, id=id)
+    if request.method == "POST":
+        service.delete()
+        return redirect('completed_services')
+    return render(request, "admin_delete_service.html", {"service": service})
+
+@login_required
 def completed_services(request):
     services = Servicio.objects.filter(completado=True)
     return render(request, 'completed_services.html', {'services': services})
