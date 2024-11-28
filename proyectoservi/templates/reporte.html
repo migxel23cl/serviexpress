@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    {% load static %}
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Reporte de Turnos</title>
+    <link rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}">
+    <link rel="stylesheet" href="{% static 'css/reporte.css' %}">
+</head>
+<body>
+    <div class="container">
+        <h1 class="text-center">Reporte de Turnos</h1><br>
+
+        <!-- Formulario para filtrar por rango de fechas -->
+        <form method="GET" class="bg-dark p-3 rounded mb-4">
+            <div class="form-group">
+                <label for="fecha_inicio" class="text-light">Fecha Inicio:</label>
+                <input type="date" id="fecha_inicio" name="fecha_inicio" class="form-control bg-secondary text-light" value="{{ fecha_inicio }}">
+            </div>
+            <div class="form-group">
+                <label for="fecha_fin" class="text-light">Fecha Fin:</label>
+                <input type="date" id="fecha_fin" name="fecha_fin" class="form-control bg-secondary text-light" value="{{ fecha_fin }}">
+            </div><br>
+            <button type="submit" class="btn btn-success">Generar Reporte</button>
+        </form>
+
+        <!-- Tabla de servicios -->
+        <h2 class="text-center text-light">Servicios</h2><br>
+        <table class="table table-dark">
+            <thead>
+                <tr>
+                    <th>Tipo de Servicio</th>
+                    <th>Modelo del Vehículo</th>
+                    <th>Descripción del Problema</th>
+                    <th>Patente</th>
+                    <th>Usuario</th>
+                    <th>Estado</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for service in services %}
+                <tr>
+                    <td>{{ service.tipo_servicio }}</td>
+                    <td>{{ service.modelo_vehiculo }}</td>
+                    <td>{{ service.descripcion_problema }}</td>
+                    <td>{{ service.patente }}</td>
+                    <td>{{ service.user.username }}</td>
+                    <td>{{ service.completado }}</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+        <button class="btn btn-primary" onclick="location.href='{% url 'employee_index' %}'">Volver</button>
+    </div>
+    <script src="{% static 'js/bootstrap.bundle.min.js' %}"></script>
+</body>
+</html>

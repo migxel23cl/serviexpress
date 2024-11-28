@@ -4,6 +4,7 @@ from .models import Profile, Servicio, Producto
 from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.decorators import login_required, user_passes_test
 from django.contrib.auth.models import Group, Permission
+from django.db.models import ExpressionWrapper, DurationField, Sum
 
 def is_in_group(group_name):
     def check(user):
@@ -71,7 +72,7 @@ def login_page(request):
                 return redirect("user_index")
         else:
             # Show error message
-            return render(request, "login.html", {"error": "Invalid username or password"})
+            return render(request, "login.html", {"error": "Usuario o contraseña incorrectos"})
 
     return render(request, "login.html")
 
@@ -167,3 +168,30 @@ def employee_delete_service(request, id):
         service.delete()
         return redirect('all_employee_service')
     return render(request, "employee_delete_service.html", {"service": service})
+
+@login_required
+def completed_services(request):
+    services = Servicio.objects.filter(completado=True)
+    return render(request, 'completed_services.html', {'services': services})
+
+@login_required
+def generar_reporte(request):
+    # Get services
+    fecha_inicio = request.GET.get('fecha_inicio')
+    fecha_fin = request.GET.get('fecha_fin')
+
+    # Filter services by date
+    if fecha_inicio and fecha_fin:
+        servicio = Servicio.objects.filter(fecha_creacion__range=[fecha_inicio, fecha_fin])
+    else:
+        servicio = Servicio.objects.all()
+
+    # Calculate total
+    reporte = {
+        'servicio': servicio,
+        'fecha_inicio': fecha_inicio,
+        'fecha_fin': fecha_fin,
+        'services': servicio 
+    }
+
+    return render(request, 'reporte.html', reporte)
